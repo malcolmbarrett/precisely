@@ -1,7 +1,12 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# precisely
+[![Travis build
+status](https://travis-ci.org/malcolmbarrett/precisely.svg?branch=master)](https://travis-ci.org/malcolmbarrett/precisely)
+[![AppVeyor build
+status](https://ci.appveyor.com/api/projects/status/github/malcolmbarrett/precisely?branch=master&svg=true)](https://ci.appveyor.com/project/malcolmbarrett/precisely)
+
+# precisely: An R package for estimating sample size based on precision
 
 precisely is a study planning tool to calculate sample size based on
 precision rather than power. Power calculations are focused on whether
