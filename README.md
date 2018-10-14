@@ -102,7 +102,8 @@ precision_odds_ratio(
 #> 1      1.55       2.25     500       1000    1500
 ```
 
-We can expect that, on average, the precision will be 1.55.
+We can expect that, on average, the upper confidence interval will be
+1.55 times as large as the lower confidence interval.
 
 precisely also has a set of functions for a different way of using
 precision: to calculate sample size based on probability that the upper

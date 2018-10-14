@@ -72,7 +72,7 @@ precision_odds_ratio(
 )
 ```
 
-We can expect that, on average, the precision will be 1.55.
+We can expect that, on average, the upper confidence interval will be 1.55 times as large as the lower confidence interval.
 
 precisely also has a set of functions for a different way of using precision: to calculate sample size based on probability that the upper limit of the confidence interval is below a level of concern. The idea here is that, if there is no true effect, we want to know how likely it is that we have a high estimate. For instance, for a rate ratio where the effect is null, we can calculate the sample size for which there is a 90% probability that the upper limit will be at or below 2.
 
