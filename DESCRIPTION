@@ -21,7 +21,8 @@ Imports:
     magrittr,
     dplyr,
     purrr,
-    ggplot2
+    ggplot2,
+    stringi
 Suggests: 
     spelling
 Language: en-US
