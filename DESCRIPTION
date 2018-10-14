@@ -1,15 +1,27 @@
 Package: precisely
 Type: Package
-Title: What the Package Does (Title Case)
-Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Title: Estimate Sample Size Based on Precision Rather Than Power
+Version: 0.1.0.9000
+Authors@R: person("Malcolm", "Barrett", 
+    email = "malcolmbarrett@gmail.com", 
+    role = c("aut", "cre"))
+Maintainer: Malcolm Barrett <malcolmbarrett@gmail.com>
+Description: Estimate sample size based on precision rather than power. 
+    precisely is a study planning tool to calculate sample size based on 
+    precision rather than power. Power calculations are focused on whether or 
+    not an estimate will be statistically significant; calculations of precision
+    are based on the same principles as power calculation but turn the focus to
+    the width of the confidence interval. 
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.1.0
 Imports: 
-    magrittr
+    magrittr,
+    dplyr,
+    purrr,
+    ggplot2
+Suggests: 
+    spelling
+Language: en-US
