@@ -28,7 +28,8 @@ plot_upper_limit(.df, xlab = "Sample Size", ylab = "Upper Limit",
 a ggplot
 }
 \description{
-Plot precisely
+Simple line plots for the output of \code{\link[=map_precisely]{map_precisely()}}. Use
+\code{\link[dplyr:group_by]{dplyr::group_by()}} to create multiple lines on the plot.
 }
 \examples{
 library(dplyr)

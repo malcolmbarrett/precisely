@@ -1,5 +1,8 @@
 #' Plot precisely
 #'
+#' Simple line plots for the output of [map_precisely()]. Use
+#' [dplyr::group_by()] to create multiple lines on the plot.
+#'
 #' @param .df a data frame with values to plot, possibly from [map_precisely()].
 #' @param xlab Label for the x-axis.
 #' @param ylab Label for the y-axis.
@@ -108,9 +111,19 @@ plot_upper_limit <- function(.df, xlab = "Sample Size", ylab = "Upper Limit", li
 #' @export
 #' @importFrom ggplot2 %+replace%
 theme_precisely <- function(base_size = 14, base_family = "", ...) {
-    ggplot2::theme_minimal(base_size = base_size, base_family = base_family) %+replace%
-    ggplot2::theme(strip.text = ggplot2::element_text(face = "bold"),
-                   legend.position = "bottom",
-                   ..., complete = TRUE)
+    ggplot2::theme_minimal(
+      base_size = base_size,
+      base_family = base_family
+     ) %+replace%
+    ggplot2::theme(
+      strip.text = ggplot2::element_text(
+        face = "bold",
+        margin = ggplot2::margin(b = 5),
+        hjust = 0
+       ),
+      legend.position = "bottom",
+      ...,
+      complete = TRUE
+    )
 }
 
