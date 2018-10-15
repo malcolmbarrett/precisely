@@ -10,7 +10,9 @@ knitr::opts_chunk$set(
   comment = "#>",
   fig.path = "man/figures/README-",
   dpi = 320,
-  out.width = "100%"
+  out.width = "100%",
+  warning = FALSE,
+  message = FALSE
 )
 ```
 [![Travis build status](https://travis-ci.org/malcolmbarrett/precisely.svg?branch=master)](https://travis-ci.org/malcolmbarrett/precisely) [![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/malcolmbarrett/precisely?branch=master&svg=true)](https://ci.appveyor.com/project/malcolmbarrett/precisely)
@@ -84,5 +86,29 @@ upper_rate_ratio(
   unexposed = .01,
   group_ratio = 1
 )
+```
+
+To calculate several values and plot them, use `map_precisely()` and the included `plot_*()` functions.
+
+```{r}
+library(tidyverse)
+
+map_precisely(
+  upper_rate_ratio, 
+  upper_limit = seq(1.5, 2.5, by = .1),
+  prob = seq(.50, .95, by = .05),
+  exposed = .01,
+  unexposed = .01,
+  group_ratio = 1:4
+ ) %>% 
+  group_by("Probability" = factor(prob)) %>% 
+  plot_upper_limit(line_size = 1) +
+    scale_color_viridis_d() +
+    scale_x_continuous(breaks = scales::pretty_breaks(3)) + 
+    theme_precisely() +
+    theme(legend.position = "right",
+          strip.text = element_text(margin = margin(b = 5), hjust = 0)) + 
+    facet_wrap(~ group_ratio,
+               labeller = as_labeller(function(x) paste("Unexposed/Exposed:", x)))
 ```
 

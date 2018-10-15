@@ -56,10 +56,11 @@ n_risk_difference(
   group_ratio = 3,
   ci = .90
 )
-#> # A tibble: 1 x 5
-#>   n_exposed n_unexposed n_total risk_difference precision
-#>       <dbl>       <dbl>   <dbl>           <dbl>     <dbl>
-#> 1       525        1573    2098             0.1      0.08
+#> # A tibble: 1 x 8
+#>   n_exposed n_unexposed n_total risk_difference precision exposed unexposed
+#>       <dbl>       <dbl>   <dbl>           <dbl>     <dbl>   <dbl>     <dbl>
+#> 1       525        1573    2098             0.1      0.08     0.4       0.3
+#> # ... with 1 more variable: group_ratio <dbl>
 ```
 
 We need 525 exposed participants and 1,573 unexposed participants for a
@@ -74,10 +75,11 @@ n_risk_ratio(
   unexposed = .3,
   group_ratio = 3
 )
-#> # A tibble: 1 x 5
-#>   n_exposed n_unexposed n_total risk_ratio precision
-#>       <dbl>       <dbl>   <dbl>      <dbl>     <dbl>
-#> 1        73         219     292       1.33         2
+#> # A tibble: 1 x 9
+#>   n_exposed n_unexposed n_total risk_ratio precision exposed unexposed
+#>       <dbl>       <dbl>   <dbl>      <dbl>     <dbl>   <dbl>     <dbl>
+#> 1        73         219     292       1.33         2     0.4       0.3
+#> # ... with 2 more variables: group_ratio <dbl>, ci <dbl>
 ```
 
 Here we only need 73 exposed participants and 219 unexposed
@@ -96,10 +98,12 @@ precision_odds_ratio(
   exposed_controls = .4,
   group_ratio = 2
 )
-#> # A tibble: 1 x 5
-#>   precision odds_ratio n_cases n_controls n_total
-#>       <dbl>      <dbl>   <dbl>      <dbl>   <dbl>
-#> 1      1.55       2.25     500       1000    1500
+#> # A tibble: 1 x 9
+#>   precision odds_ratio n_cases n_controls n_total exposed_cases
+#>       <dbl>      <dbl>   <dbl>      <dbl>   <dbl>         <dbl>
+#> 1      1.55       2.25     500       1000    1500           0.6
+#> # ... with 3 more variables: exposed_controls <dbl>, group_ratio <dbl>,
+#> #   ci <dbl>
 ```
 
 We can expect that, on average, the upper confidence interval will be
@@ -121,8 +125,36 @@ upper_rate_ratio(
   unexposed = .01,
   group_ratio = 1
 )
-#> # A tibble: 1 x 6
-#>   n_exposed n_unexposed n_total rate_ratio upper_limit  prob
-#>       <dbl>       <dbl>   <dbl>      <dbl>       <dbl> <dbl>
-#> 1      4374        4374    8748          1           2   0.9
+#> # A tibble: 1 x 10
+#>   n_exposed n_unexposed n_total rate_ratio upper_limit  prob exposed
+#>       <dbl>       <dbl>   <dbl>      <dbl>       <dbl> <dbl>   <dbl>
+#> 1      4374        4374    8748          1           2   0.9    0.01
+#> # ... with 3 more variables: unexposed <dbl>, group_ratio <dbl>, ci <dbl>
 ```
+
+To calculate several values and plot them, use `map_precisely()` and the
+included `plot_*()` functions.
+
+``` r
+library(tidyverse)
+
+map_precisely(
+  upper_rate_ratio, 
+  upper_limit = seq(1.5, 2.5, by = .1),
+  prob = seq(.50, .95, by = .05),
+  exposed = .01,
+  unexposed = .01,
+  group_ratio = 1:4
+ ) %>% 
+  group_by("Probability" = factor(prob)) %>% 
+  plot_upper_limit(line_size = 1) +
+    scale_color_viridis_d() +
+    scale_x_continuous(breaks = scales::pretty_breaks(3)) + 
+    theme_precisely() +
+    theme(legend.position = "right",
+          strip.text = element_text(margin = margin(b = 5), hjust = 0)) + 
+    facet_wrap(~ group_ratio,
+               labeller = as_labeller(function(x) paste("Unexposed/Exposed:", x)))
+```
+
+<img src="man/figures/README-unnamed-chunk-5-1.png" width="100%" />
