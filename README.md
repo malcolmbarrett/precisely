@@ -151,8 +151,7 @@ map_precisely(
     scale_color_viridis_d() +
     scale_x_continuous(breaks = scales::pretty_breaks(3)) + 
     theme_precisely() +
-    theme(legend.position = "right",
-          strip.text = element_text(margin = margin(b = 5), hjust = 0)) + 
+    theme(legend.position = "right") + 
     facet_wrap(~ group_ratio,
                labeller = as_labeller(function(x) paste("Unexposed/Exposed:", x)))
 ```
