@@ -40,7 +40,17 @@ precision_risk_difference <- function(n_exposed, exposed, unexposed, group_ratio
 
   risk_difference <- exposed - unexposed
 
-  dplyr::tibble(precision, risk_difference, n_exposed, n_unexposed, n_total)
+  dplyr::tibble(
+    precision,
+    risk_difference,
+    n_exposed,
+    n_unexposed,
+    n_total,
+    exposed,
+    unexposed,
+    group_ratio,
+    ci
+  )
 }
 
 #' @rdname precision_risk_difference
@@ -57,7 +67,17 @@ precision_risk_ratio <- function(n_exposed, exposed, unexposed, group_ratio, ci 
 
   risk_ratio <- exposed / unexposed
 
-  dplyr::tibble(precision, risk_ratio, n_exposed, n_unexposed, n_total)
+    dplyr::tibble(
+    precision,
+    risk_ratio,
+    n_exposed,
+    n_unexposed,
+    n_total,
+    exposed,
+    unexposed,
+    group_ratio,
+    ci
+  )
 }
 
 #' @rdname precision_risk_difference
@@ -73,7 +93,17 @@ precision_rate_difference <- function(n_exposed, exposed, unexposed, group_ratio
 
   rate_difference <- exposed - unexposed
 
-  dplyr::tibble(precision, rate_difference, n_exposed, n_unexposed, n_total)
+    dplyr::tibble(
+    precision,
+    rate_difference,
+    n_exposed,
+    n_unexposed,
+    n_total,
+    exposed,
+    unexposed,
+    group_ratio,
+    ci
+  )
 }
 
 #' @rdname precision_risk_difference
@@ -90,7 +120,17 @@ precision_rate_ratio <- function(n_exposed, exposed, unexposed, group_ratio, ci 
 
   rate_ratio <- exposed / unexposed
 
-  dplyr::tibble(precision, rate_ratio, n_exposed, n_unexposed, n_total)
+  dplyr::tibble(
+    precision,
+    rate_ratio,
+    n_exposed,
+    n_unexposed,
+    n_total,
+    exposed,
+    unexposed,
+    group_ratio,
+    ci
+  )
 }
 
 #' @rdname precision_risk_difference
@@ -108,6 +148,15 @@ precision_odds_ratio <- function(n_cases, exposed_cases, exposed_controls, group
 
   odds_ratio <- odds_ratio(exposed_cases, exposed_controls)
 
-  dplyr::tibble(precision, odds_ratio, n_cases, n_controls, n_total)
+  dplyr::tibble(
+    precision,
+    odds_ratio,
+    n_cases,
+    n_controls,
+    n_total,
+    exposed_cases,
+    exposed_controls,
+    group_ratio,
+    ci)
 }
 

@@ -22,7 +22,9 @@ Imports:
     dplyr,
     purrr,
     ggplot2,
-    stringi
+    stringi,
+    tidyr,
+    rlang
 Suggests: 
     spelling
 Language: en-US

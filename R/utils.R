@@ -1,3 +1,12 @@
+utils::globalVariables(
+  c(
+    "n_total",
+    "precision",
+    "upper_limit"
+    )
+)
+
+
 #' @importFrom stats qnorm
 get_z_score <- function(x, cumulative = FALSE) {
   if (!dplyr::between(x, 0, 1)) {

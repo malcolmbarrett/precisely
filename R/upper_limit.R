@@ -48,7 +48,18 @@ upper_risk_difference <- function(upper_limit, prob, exposed, unexposed, group_r
 
   risk_difference <- exposed - unexposed
 
-  dplyr::tibble(n_exposed, n_unexposed, n_total, risk_difference, upper_limit, prob)
+  dplyr::tibble(
+    n_exposed,
+    n_unexposed,
+    n_total,
+    risk_difference,
+    upper_limit,
+    prob,
+    exposed,
+    unexposed,
+    group_ratio,
+    ci
+  )
 }
 
 #' @rdname upper_risk_difference
@@ -66,7 +77,18 @@ upper_risk_ratio <- function(upper_limit, prob, exposed, unexposed, group_ratio,
 
   risk_ratio <- exposed / unexposed
 
-  dplyr::tibble(n_exposed, n_unexposed, n_total, risk_ratio, upper_limit, prob)
+  dplyr::tibble(
+    n_exposed,
+    n_unexposed,
+    n_total,
+    risk_ratio,
+    upper_limit,
+    prob,
+    exposed,
+    unexposed,
+    group_ratio,
+    ci
+  )
 }
 
 #' @rdname upper_risk_difference
@@ -84,7 +106,18 @@ upper_rate_difference <- function(upper_limit, prob, exposed, unexposed, group_r
 
   rate_difference <- exposed - unexposed
 
-  dplyr::tibble(n_exposed, n_unexposed, n_total, rate_difference, upper_limit, prob)
+  dplyr::tibble(
+    n_exposed,
+    n_unexposed,
+    n_total,
+    rate_difference,
+    upper_limit,
+    prob,
+    exposed,
+    unexposed,
+    group_ratio,
+    ci
+  )
 }
 
 #' @rdname upper_risk_difference
@@ -102,7 +135,18 @@ upper_rate_ratio <- function(upper_limit, prob, exposed, unexposed, group_ratio,
 
   rate_ratio <- exposed / unexposed
 
-  dplyr::tibble(n_exposed, n_unexposed, n_total, rate_ratio, upper_limit, prob)
+  dplyr::tibble(
+    n_exposed,
+    n_unexposed,
+    n_total,
+    rate_ratio,
+    upper_limit,
+    prob,
+    exposed,
+    unexposed,
+    group_ratio,
+    ci
+  )
 }
 
 #' @rdname upper_risk_difference
@@ -120,6 +164,17 @@ upper_odds_ratio <- function(upper_limit, prob, exposed_cases, exposed_controls,
 
   odds_ratio <- odds_ratio(exposed_cases, exposed_controls)
 
-  dplyr::tibble(n_cases, n_controls, n_total, odds_ratio, upper_limit, prob)
+  dplyr::tibble(
+    n_cases,
+    n_controls,
+    n_total,
+    odds_ratio,
+    upper_limit,
+    prob,
+    exposed_cases,
+    exposed_controls,
+    group_ratio,
+    ci
+  )
 }
 

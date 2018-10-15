@@ -51,7 +51,7 @@ difference, this is the absolute width of the confidence interval.
 
 # From Rothman and Greenland 2018
 
-n_rate_difference(
+n_risk_difference(
   precision = .08,
   exposed = .4,
   unexposed = .3,

@@ -55,7 +55,16 @@ n_risk_difference <- function(precision, exposed, unexposed, group_ratio, ci = .
 
   risk_difference <- exposed - unexposed
 
-  dplyr::tibble(n_exposed, n_unexposed, n_total, risk_difference, precision)
+  dplyr::tibble(
+    n_exposed,
+    n_unexposed,
+    n_total,
+    risk_difference,
+    precision,
+    exposed,
+    unexposed,
+    group_ratio
+  )
 }
 
 #' @rdname n_risk_difference
@@ -72,7 +81,17 @@ n_risk_ratio <- function(precision, exposed, unexposed, group_ratio, ci = .95) {
 
   risk_ratio <- exposed / unexposed
 
-  dplyr::tibble(n_exposed, n_unexposed, n_total, risk_ratio, precision)
+  dplyr::tibble(
+    n_exposed,
+    n_unexposed,
+    n_total,
+    risk_ratio,
+    precision,
+    exposed,
+    unexposed,
+    group_ratio,
+    ci
+  )
 }
 
 #' @rdname n_risk_difference
@@ -89,7 +108,16 @@ n_rate_difference <- function(precision, exposed, unexposed, group_ratio, ci = .
 
   rate_difference <- exposed - unexposed
 
-  dplyr::tibble(n_exposed, n_unexposed, n_total, rate_difference, precision)
+  dplyr::tibble(
+    n_exposed,
+    n_unexposed,
+    n_total,
+    rate_difference,
+    precision,
+    exposed,
+    unexposed,
+    group_ratio
+  )
 }
 
 #' @rdname n_risk_difference
@@ -106,7 +134,17 @@ n_rate_ratio <- function(precision, exposed, unexposed, group_ratio, ci = .95) {
 
   rate_ratio <- exposed / unexposed
 
-  dplyr::tibble(n_exposed, n_unexposed, n_total, rate_ratio, precision)
+  dplyr::tibble(
+    n_exposed,
+    n_unexposed,
+    n_total,
+    rate_ratio,
+    precision,
+    exposed,
+    unexposed,
+    group_ratio,
+    ci
+  )
 }
 
 #' @rdname n_risk_difference
@@ -123,6 +161,16 @@ n_odds_ratio <- function(precision, exposed_cases, exposed_controls, group_ratio
 
   odds_ratio <- odds_ratio(exposed_cases, exposed_controls)
 
-  dplyr::tibble(n_cases, n_controls, n_total, odds_ratio, precision)
+  dplyr::tibble(
+    n_cases,
+    n_controls,
+    n_total,
+    odds_ratio,
+    precision,
+    exposed_cases,
+    exposed_controls,
+    group_ratio,
+    ci
+    )
 }
 
