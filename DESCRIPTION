@@ -29,6 +29,7 @@ Imports:
 Suggests: 
     spelling,
     knitr,
-    rmarkdown
+    rmarkdown,
+    ggrepel
 Language: en-US
 VignetteBuilder: knitr

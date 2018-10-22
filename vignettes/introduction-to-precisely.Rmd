@@ -4,7 +4,7 @@ author: "Malcolm Barrett"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteIndexEntry{Introduction to Precisely}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -12,18 +12,101 @@ vignette: >
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>"
+  comment = "#>",
+  fig.height = 5, 
+  fig.width = 6
 )
 ```
 
-Vignettes are long form documentation commonly included in packages. Because they are part of the distribution of the package, they need to be as compact as possible. The `html_vignette` output type provides a custom style sheet (and tweaks some options) to ensure that the resulting html is as small as possible. The `html_vignette` format:
+## Estimating for precision
 
-## Vignette Info
+precisely is a study planning tool to calculate sample size based on precision rather than power. Power calculations are focused on whether or not an estimate will be statistically significant; calculations of precision are based on the same prinicples as power calculation but turn the focus to the width of the confidence interval. 
 
-```{r}
-library(tidyverse)
+These tools are based on the work of [Rothman and Greenland](https://www.ncbi.nlm.nih.gov/pubmed/29912015).
+
+precisely has functions for studies using risk differences, risk ratios, rate differences, rate ratios, and odds ratios. The heart of these calculations is the desired precision.  For ratio measures, this is the ratio of the upper to lower limit of the confidence interval. For difference measures, this is the absolute width of the confidence interval. To calculate sample size for a given precision, you also need proportions for the two groups (the risk or rate in the exposed and unexposed participants in a cohort study or the exposure prevalence in the cases and controls in case-control studies), the ratios of the two groups (the unexposed to the exposed in cohort studies or controls to cases in case-control studies), and the desired confidence interval probability. The default is 95%.
+
+Let's say we want to calculate the sample size needed to estimate a 90% CI for a risk difference of .1 with an absolute width of .08. Here, the risk among the exposed is .4, the risk among the unexposed is .3, and there are three times as many unexposed participants. 
+
+
+```{r, message=FALSE}
+library(tidyr)
+library(dplyr)
+library(purrr)
+library(ggplot2)
 library(precisely)
 
+n_risk_difference(
+  precision = .08,
+  exposed = .4,
+  unexposed = .3,
+  group_ratio = 3,
+  ci = .90
+)
+```
+
+We need 525 exposed participants and 1,573 unexposed participants for a total sample size of 2,098. For the same population, what sample size would we need to estimate a risk ratio where the upper bound of a 95% CI has a ratio of 2 with the lower bound?
+
+```{r}
+n_risk_ratio(
+  precision = 2,
+  exposed = .4,
+  unexposed = .3,
+  group_ratio = 3
+)
+```
+
+Here we only need 73 exposed participants and 219 unexposed participants, a total sample size of 292.
+
+precisely also provides functionality to calculate the precision of an estimate given a sample size. For instance, in a case-control study with 500 cases, 1,000 controls and prevalences among the cases and controls of .6 and .4, respectively, what is the ratio of the upper bound to the lower bound?
+
+```{r}
+precision_odds_ratio(
+  n_cases = 500,
+  exposed_cases = .6,
+  exposed_controls = .4,
+  group_ratio = 2
+)
+```
+
+We can expect that, on average, the upper confidence interval will be 1.55 times as large as the lower confidence interval.
+
+precisely also has a set of functions for a different way of using precision: to calculate sample size based on probability that the upper limit of the confidence interval is below a level of concern. The idea here is that, if there is no true effect, we want to know how likely it is that we have a high estimate. For instance, for a rate ratio where the effect is null, we can calculate the sample size for which there is a 90% probability that the upper limit will be at or below 2.
+
+```{r}
+upper_rate_ratio(
+  upper_limit = 2,
+  prob = .90,
+  exposed = .01,
+  unexposed = .01,
+  group_ratio = 1
+)
+```
+
+To calculate several values and plot them, use `map_precisely()` and the included `plot_*()` functions.
+
+```{r}
+map_precisely(
+  upper_rate_ratio, 
+  upper_limit = seq(1.5, 2.5, by = .1),
+  prob = seq(.50, .95, by = .05),
+  exposed = .01,
+  unexposed = .01,
+  group_ratio = 1:4
+ ) %>% 
+  group_by("Probability" = factor(prob)) %>% 
+  plot_upper_limit(line_size = 1) +
+    scale_color_viridis_d() +
+    scale_x_continuous(breaks = scales::pretty_breaks(3)) + 
+    theme_precisely() +
+    theme(legend.position = "right") + 
+    facet_wrap(~ group_ratio,
+               labeller = as_labeller(function(x) paste("Unexposed/Exposed:", x)))
+```
+
+
+
+```{r}
 arguments <- crossing(
   precision = 2,
   exposed = seq(from = .01, to = .05, by = .005),
@@ -73,7 +156,7 @@ bind_rows(lower_risk, higher_risk) %>%
     labs(x = "Study Size", y = "Confidence Interval Width", color = "Risk in\nUnexposed") +
   xlim(c(0, 9000)) +
   theme_minimal(14) + 
-  colorblindr::scale_color_OkabeIto()
+  scale_color_manual(values = c("#E69F00", "#56B4E9"))
 
 map_precisely(
   n_risk_difference,
@@ -93,8 +176,6 @@ map_precisely(
       nudge_y = c(-.015, .03),
      ) +
     labs(
-      #title = "Sample size for width of confidence interval",
-      #subtitle = str_wrap("Instead of power, we can calculate sample size based on precision. For the risk difference, the precision is the absolute risk of the confidence interval. In this example, the risk difference is .1 and there are equal amounts of exposed and unexposed participants.", width = 60),
       x = "Study Size", 
       y = "Confidence Interval Width", 
       color = "Risk in\nUnexposed"
@@ -103,8 +184,8 @@ map_precisely(
     theme(legend.position = "none",
           plot.title = element_text(size = 16),
           plot.subtitle = element_text(size = 12, color = "grey60")) +
-    colorblindr::scale_color_OkabeIto() + 
-  xlim(0, 9000)
+    scale_color_manual(values = c("#E69F00", "#56B4E9")) + 
+    xlim(0, 9000)
 
 map_precisely(
   n_risk_difference,
