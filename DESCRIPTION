@@ -24,7 +24,11 @@ Imports:
     ggplot2,
     stringi,
     tidyr,
-    rlang
+    rlang,
+    shiny
 Suggests: 
-    spelling
+    spelling,
+    knitr,
+    rmarkdown
 Language: en-US
+VignetteBuilder: knitr

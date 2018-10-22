@@ -35,7 +35,7 @@ precision_risk_difference <- function(n_exposed, exposed, unexposed, group_ratio
   denominator <- sqrt(n_exposed * group_ratio)
   precision <- ((2*z) * numerator) / denominator
 
-  n_unexposed <- ceiling(n_exposed * group_ratio)
+  n_unexposed <- n_exposed * group_ratio
   n_total <- n_exposed + n_unexposed
 
   risk_difference <- exposed - unexposed
@@ -62,7 +62,7 @@ precision_risk_ratio <- function(n_exposed, exposed, unexposed, group_ratio, ci 
   precision <- ((2*z) * numerator) / denominator
   precision <- exp(precision)
 
-  n_unexposed <- ceiling(n_exposed * group_ratio)
+  n_unexposed <- n_exposed * group_ratio
   n_total <- n_exposed + n_unexposed
 
   risk_ratio <- exposed / unexposed
@@ -88,7 +88,7 @@ precision_rate_difference <- function(n_exposed, exposed, unexposed, group_ratio
   denominator <- sqrt(n_exposed * group_ratio)
   precision <- ((2*z) * numerator) / denominator
 
-  n_unexposed <- ceiling(n_exposed * group_ratio)
+  n_unexposed <- n_exposed * group_ratio
   n_total <- n_exposed + n_unexposed
 
   rate_difference <- exposed - unexposed
@@ -115,7 +115,7 @@ precision_rate_ratio <- function(n_exposed, exposed, unexposed, group_ratio, ci 
   precision <- ((2*z) * numerator) / denominator
   precision <- exp(precision)
 
-  n_unexposed <- ceiling(n_exposed * group_ratio)
+  n_unexposed <- n_exposed * group_ratio
   n_total <- n_exposed + n_unexposed
 
   rate_ratio <- exposed / unexposed
@@ -143,7 +143,7 @@ precision_odds_ratio <- function(n_cases, exposed_cases, exposed_controls, group
   precision <- ((2*z) * numerator) / denominator
   precision <- exp(precision)
 
-  n_controls <- ceiling(n_cases * group_ratio)
+  n_controls <- n_cases * group_ratio
   n_total <- n_cases + n_controls
 
   odds_ratio <- odds_ratio(exposed_cases, exposed_controls)

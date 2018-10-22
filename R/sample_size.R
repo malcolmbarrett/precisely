@@ -49,8 +49,7 @@ n_risk_difference <- function(precision, exposed, unexposed, group_ratio, ci = .
   denominator <- group_ratio * precision^2
   n_exposed <- ((4*z^2) * numerator) / denominator
 
-  n_unexposed <- ceiling(n_exposed * group_ratio)
-  n_exposed <- ceiling(n_exposed)
+  n_unexposed <- n_exposed * group_ratio
   n_total <- n_exposed + n_unexposed
 
   risk_difference <- exposed - unexposed
@@ -75,8 +74,7 @@ n_risk_ratio <- function(precision, exposed, unexposed, group_ratio, ci = .95) {
   denominator <- group_ratio * exposed * unexposed * (log(precision))^2
   n_exposed <- ((4*z^2) * numerator) / denominator
 
-  n_unexposed <- ceiling(n_exposed * group_ratio)
-  n_exposed <- ceiling(n_exposed)
+  n_unexposed <- n_exposed * group_ratio
   n_total <- n_exposed + n_unexposed
 
   risk_ratio <- exposed / unexposed
@@ -102,8 +100,7 @@ n_rate_difference <- function(precision, exposed, unexposed, group_ratio, ci = .
   denominator <- group_ratio * precision^2
   n_exposed <- ((4*z^2) * numerator) / denominator
 
-  n_unexposed <- ceiling(n_exposed * group_ratio)
-  n_exposed <- ceiling(n_exposed)
+  n_unexposed <- n_exposed * group_ratio
   n_total <- n_exposed + n_unexposed
 
   rate_difference <- exposed - unexposed
@@ -128,8 +125,7 @@ n_rate_ratio <- function(precision, exposed, unexposed, group_ratio, ci = .95) {
   denominator <- group_ratio * exposed * unexposed * (log(precision))^2
   n_exposed <- ((4*z^2) * numerator) / denominator
 
-  n_unexposed <- ceiling(n_exposed * group_ratio)
-  n_exposed <- ceiling(n_exposed)
+  n_unexposed <- n_exposed * group_ratio
   n_total <- n_exposed + n_unexposed
 
   rate_ratio <- exposed / unexposed
@@ -155,8 +151,7 @@ n_odds_ratio <- function(precision, exposed_cases, exposed_controls, group_ratio
   denominator <- (log(precision))^2 * group_ratio * exposed_cases * exposed_controls * (1 - exposed_cases) * (1 - exposed_controls)
   n_cases <- ((4*z^2) * numerator) / denominator
 
-  n_controls <- ceiling(n_cases * group_ratio)
-  n_cases <- ceiling(n_cases)
+  n_controls <- n_cases * group_ratio
   n_total <- n_cases + n_controls
 
   odds_ratio <- odds_ratio(exposed_cases, exposed_controls)

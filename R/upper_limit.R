@@ -42,8 +42,7 @@ upper_risk_difference <- function(upper_limit, prob, exposed, unexposed, group_r
   denominator <- group_ratio * upper_limit^2
   n_exposed <- ((z + z_cumulative)^2 * numerator) / denominator
 
-  n_unexposed <- ceiling(n_exposed * group_ratio)
-  n_exposed <- ceiling(n_exposed)
+  n_unexposed <- n_exposed * group_ratio
   n_total <- n_exposed + n_unexposed
 
   risk_difference <- exposed - unexposed
@@ -71,8 +70,7 @@ upper_risk_ratio <- function(upper_limit, prob, exposed, unexposed, group_ratio,
   denominator <- group_ratio * exposed * unexposed * (log(upper_limit))^2
   n_exposed <- ((z + z_cumulative)^2 * numerator) / denominator
 
-  n_unexposed <- ceiling(n_exposed * group_ratio)
-  n_exposed <- ceiling(n_exposed)
+  n_unexposed <- n_exposed * group_ratio
   n_total <- n_exposed + n_unexposed
 
   risk_ratio <- exposed / unexposed
@@ -100,8 +98,7 @@ upper_rate_difference <- function(upper_limit, prob, exposed, unexposed, group_r
   denominator <- group_ratio * upper_limit^2
   n_exposed <- ((z + z_cumulative)^2 * numerator) / denominator
 
-  n_unexposed <- ceiling(n_exposed * group_ratio)
-  n_exposed <- ceiling(n_exposed)
+  n_unexposed <- n_exposed * group_ratio
   n_total <- n_exposed + n_unexposed
 
   rate_difference <- exposed - unexposed
@@ -129,8 +126,7 @@ upper_rate_ratio <- function(upper_limit, prob, exposed, unexposed, group_ratio,
   denominator <- group_ratio * exposed * unexposed * (log(upper_limit))^2
   n_exposed <- ((z + z_cumulative)^2 * numerator) / denominator
 
-  n_unexposed <- ceiling(n_exposed * group_ratio)
-  n_exposed <- ceiling(n_exposed)
+  n_unexposed <- n_exposed * group_ratio
   n_total <- n_exposed + n_unexposed
 
   rate_ratio <- exposed / unexposed
@@ -158,8 +154,7 @@ upper_odds_ratio <- function(upper_limit, prob, exposed_cases, exposed_controls,
   denominator <- (log(upper_limit))^2 * group_ratio * exposed_cases * exposed_controls * (1 - exposed_cases) * (1 - exposed_controls)
   n_cases <- ((z + z_cumulative)^2 * numerator) / denominator
 
-  n_controls <- ceiling(n_cases * group_ratio)
-  n_cases <- ceiling(n_cases)
+  n_controls <- n_cases * group_ratio
   n_total <- n_cases + n_controls
 
   odds_ratio <- odds_ratio(exposed_cases, exposed_controls)

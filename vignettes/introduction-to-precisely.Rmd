@@ -1,0 +1,146 @@
+---
+title: "Introduction to Precisely"
+author: "Malcolm Barrett"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+Vignettes are long form documentation commonly included in packages. Because they are part of the distribution of the package, they need to be as compact as possible. The `html_vignette` output type provides a custom style sheet (and tweaks some options) to ensure that the resulting html is as small as possible. The `html_vignette` format:
+
+## Vignette Info
+
+```{r}
+library(tidyverse)
+library(precisely)
+
+arguments <- crossing(
+  precision = 2,
+  exposed = seq(from = .01, to = .05, by = .005),
+  unexposed = seq(from = .01, to = .05, by = .005),
+  group_ratio = 1
+) 
+
+arguments %>% 
+  pmap_dfr(n_rate_ratio) %>% 
+  gather(key, value, exposed, unexposed) %>% 
+  ggplot(aes(n_total, rate_ratio, col = factor(value))) +
+    geom_line(size = 1.1) + 
+    facet_wrap(~key, labeller = as_labeller(function(x) paste("Risk among", x))) +
+    labs(
+      title = "Sample Size Needed for a Upper to Lower CI Ratio of 2",
+      x = "Sample Size", 
+      y = "Rate Ratio", 
+      color = "Risk"
+     ) +
+    scale_color_viridis_d() +
+    theme_minimal(14) +
+    theme(
+      plot.title = element_text(size = 20, margin = margin(.01, .01, .01, .01)),
+      strip.text = element_text(size = 16, color = "grey50", hjust = 0)
+    )
+
+
+lower_risk <- tibble(
+  precision = seq(from = .02, to = .20, by = .005),
+  exposed = .2,
+  unexposed = .1,
+  group_ratio = 1
+)
+
+higher_risk <- tibble(
+  precision = seq(from = .02, to = .20, by = .005),
+  exposed = .4,
+  unexposed = .3,
+  group_ratio = 1
+)
+
+
+bind_rows(lower_risk, higher_risk) %>% 
+  pmap_dfr(n_risk_difference) %>% 
+  ggplot(aes(n_total, precision, col = factor(unexposed))) +
+    geom_line(size = 1.1) + 
+    labs(x = "Study Size", y = "Confidence Interval Width", color = "Risk in\nUnexposed") +
+  xlim(c(0, 9000)) +
+  theme_minimal(14) + 
+  colorblindr::scale_color_OkabeIto()
+
+map_precisely(
+  n_risk_difference,
+  precision = seq(from = .030, to = .200, by = .005),
+  exposed = c(.2, .4),
+  unexposed = c(.1, .3),
+  group_ratio = 1
+) %>% 
+  filter(near(risk_difference, 0.1)) %>% 
+  ggplot(aes(n_total, precision, col = factor(unexposed))) +
+    geom_line(size = 1.1) + 
+    ggrepel::geom_text_repel( col = "grey30",
+      data = function(x) filter(x, near(n_total, 2500, 100)), 
+      aes(label = paste("Risk in Unexposed:", unexposed)), 
+      size = 4, segment.size = .5,
+      nudge_x = c(-900, 1100),
+      nudge_y = c(-.015, .03),
+     ) +
+    labs(
+      #title = "Sample size for width of confidence interval",
+      #subtitle = str_wrap("Instead of power, we can calculate sample size based on precision. For the risk difference, the precision is the absolute risk of the confidence interval. In this example, the risk difference is .1 and there are equal amounts of exposed and unexposed participants.", width = 60),
+      x = "Study Size", 
+      y = "Confidence Interval Width", 
+      color = "Risk in\nUnexposed"
+     ) +
+    theme_minimal(12) + 
+    theme(legend.position = "none",
+          plot.title = element_text(size = 16),
+          plot.subtitle = element_text(size = 12, color = "grey60")) +
+    colorblindr::scale_color_OkabeIto() + 
+  xlim(0, 9000)
+
+map_precisely(
+  n_risk_difference,
+  precision = seq(from = .02, to = .20, by = .005),
+  exposed = .4,
+  unexposed = .3,
+  group_ratio = 1
+ ) %>% 
+  plot_sample_size()
+
+map_precisely(
+  precision_odds_ratio,
+  n_cases = seq(from = 500, to = 1000, by = 10),
+  exposed_cases = .6,
+  exposed_controls = .4,
+  group_ratio = 1:4
+) %>% 
+  group_by("Control/Case Ratio" = factor(group_ratio)) %>% 
+  plot_precision()
+
+map_precisely(
+  upper_rate_ratio, 
+  upper_limit = seq(1.5, 2.5, by = .1),
+  prob = seq(.50, .95, by = .05),
+  exposed = .01,
+  unexposed = .01,
+  group_ratio = 1:4
+ ) %>% 
+  group_by("Probability" = factor(prob)) %>% 
+  plot_upper_limit(line_size = 1) +
+    scale_color_viridis_d() +
+    theme_precisely() +
+    theme(legend.position = "right",
+          strip.text = element_text(margin = margin(b = 5), hjust = 0)) + 
+    facet_wrap(~ group_ratio,
+               labeller = as_labeller(function(x) paste("Unexposed/Exposed:", x)))
+
+```
+
