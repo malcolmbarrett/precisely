@@ -153,7 +153,7 @@ ui <- fluidPage(
                           value = 4)
           ),
 
-        width = 2),
+        width = 3),
       # Main panel
       mainPanel(
         includeMarkdown("intro.md"),
@@ -167,7 +167,7 @@ ui <- fluidPage(
            ),
           tabPanel("About", includeMarkdown("about.md"))
           ),
-        width = 4
+        width = 6
       )
    )
 )

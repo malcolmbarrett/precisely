@@ -25,7 +25,9 @@ Imports:
     stringi,
     tidyr,
     rlang,
-    shiny
+    shiny,
+    shinythemes,
+    markdown
 Suggests: 
     spelling,
     knitr,
