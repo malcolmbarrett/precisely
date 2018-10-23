@@ -77,4 +77,4 @@ map_precisely(
                labeller = as_labeller(function(x) paste("Unexposed/Exposed:", x)))
 ```
 
-For more, see the vignette.
+For more, see the [vignette](https://htmlpreview.github.io/?https://github.com/malcolmbarrett/precisely/blob/master/doc/introduction-to-precisely.html).

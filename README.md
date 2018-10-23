@@ -99,4 +99,5 @@ map_precisely(
 
 <img src="man/figures/README-unnamed-chunk-2-1.png" width="100%" />
 
-For more, see the vignette.
+For more, see the
+[vignette](https://htmlpreview.github.io/?https://github.com/malcolmbarrett/precisely/blob/master/doc/introduction-to-precisely.html).
