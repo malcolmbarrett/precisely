@@ -16,7 +16,9 @@ knitr::opts_chunk$set(
   message = FALSE,
   comment = "#>",
   fig.height = 5, 
-  fig.width = 6
+  fig.width = 6,
+  dpi = 320,
+  fig.align = "center"
 )
 ```
 

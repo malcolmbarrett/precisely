@@ -36,3 +36,5 @@ Suggests:
     ggrepel
 Language: en-US
 VignetteBuilder: knitr
+URL: https://github.com/malcolmbarrett/precisely
+BugReports: https://github.com/malcolmbarrett/precisely/issues

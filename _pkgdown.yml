@@ -1,0 +1,40 @@
+template:
+  params:
+    bootswatch: sandstone
+
+authors:
+  Malcolm Barrett:
+    href: https://malco.io
+
+reference:
+- title: Calculate Sample Size Based on Precision
+  contents:
+    - starts_with("n_")
+
+- title: Calculate Precision Based on Sample Size
+  contents:
+    - starts_with("precision_")
+
+- title: Calculate Sample Size Based on Upper Limit Probability
+  contents:
+    - starts_with("upper_")
+
+- title: Map and Plot Multiple Estimates
+  contents:
+    - map_precisely
+    - starts_with("plot_")
+    - theme_precisely
+
+- title: Launch Shiny App
+  contents:
+    - launch_precisely_app
+
+navbar:
+  type: default
+  left:
+  - icon: fa-home fa-lg
+    href: index.html
+  - text: Reference
+    href: /reference/index.html
+  - text: An Introduction to precisely
+    href: /articles/introduction-to-precisely.html
