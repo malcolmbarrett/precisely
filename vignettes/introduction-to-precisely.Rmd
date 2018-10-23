@@ -113,7 +113,7 @@ map_precisely(
   group_by("Probability" = factor(prob)) %>% 
   plot_upper_limit(line_size = 1) +
     scale_color_viridis_d() +
-    scale_x_continuous(breaks = scales::pretty_breaks(3)) + 
+    scale_x_continuous(breaks = c(0, 20000, 40000)) + 
     theme_precisely() +
     theme(legend.position = "right") + 
     facet_wrap(~ group_ratio,
