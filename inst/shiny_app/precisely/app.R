@@ -2,6 +2,8 @@ library(shiny)
 library(ggplot2)
 library(dplyr)
 library(precisely)
+library(markdown)
+library(shinycssloaders)
 
 ui <- fluidPage(
    theme = shinythemes::shinytheme("united"),
@@ -159,7 +161,7 @@ ui <- fluidPage(
         includeMarkdown("intro.md"),
         tabsetPanel(
           type = "tabs",
-          tabPanel("Plot", plotOutput("precisely_plot", height = "600px")),
+          tabPanel("Plot", withSpinner(plotOutput("precisely_plot", height = "600px"))),
           tabPanel(
             "Table",
             dataTableOutput("precisely_table"),
@@ -167,7 +169,7 @@ ui <- fluidPage(
            ),
           tabPanel("About", includeMarkdown("about.md"))
           ),
-        width = 6
+        width = 7
       )
    )
 )

@@ -27,7 +27,8 @@ Imports:
     rlang,
     shiny,
     shinythemes,
-    markdown
+    markdown,
+    shinycssloaders
 Suggests: 
     spelling,
     knitr,
