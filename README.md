@@ -19,6 +19,9 @@ can start with `launch_precisely_app()`. You can also find a live
 version at
 [malcolmbarrett.shinyapps.io/precisely](https://malcolmbarrett.shinyapps.io/precisely/).
 
+For more, see the
+[vignette](http://precisely.malco.io/articles/introduction-to-precisely.html).
+
 These tools are based on the work of [Rothman and
 Greenland](https://www.ncbi.nlm.nih.gov/pubmed/29912015).
 
@@ -98,6 +101,3 @@ map_precisely(
 ```
 
 <img src="man/figures/README-unnamed-chunk-2-1.png" width="100%" />
-
-For more, see the
-[vignette](https://htmlpreview.github.io/?https://github.com/malcolmbarrett/precisely/blob/master/doc/introduction-to-precisely.html).
