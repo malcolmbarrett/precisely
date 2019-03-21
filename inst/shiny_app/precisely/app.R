@@ -188,7 +188,7 @@ server <- function(input, output, session) {
     arg_labels <- case_when(
       function_args == "none" ~ "None",
       function_args == "exposed" ~ "Exposed Participants",
-      function_args == "unexposed" ~ "Unxposed Participants",
+      function_args == "unexposed" ~ "Unexposed Participants",
       function_args == "exposed_cases" ~ "Exposed Cases",
       function_args == "exposed_controls" ~ "Exposed Controls",
       function_args == "group_ratio" ~ "Group Ratio",
@@ -340,7 +340,7 @@ server <- function(input, output, session) {
     group_var_label <- case_when(
       group_var == "none" ~ "None",
       group_var == "exposed" ~ "Exposed Participants",
-      group_var == "unexposed" ~ "Unxposed Participants",
+      group_var == "unexposed" ~ "Unexposed Participants",
       group_var == "exposed_cases" ~ "Exposed Cases",
       group_var == "exposed_controls" ~ "Exposed Controls",
       group_var == "group_ratio" ~ "Group Ratio",
