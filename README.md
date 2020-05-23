@@ -11,7 +11,7 @@ status](https://ci.appveyor.com/api/projects/status/github/malcolmbarrett/precis
 precisely is a study planning tool to calculate sample size based on
 precision rather than power. Power calculations are focused on whether
 or not an estimate will be statistically significant; calculations of
-precision are based on the same prinicples as power calculation but turn
+precision are based on the same principles as power calculation but turn
 the focus to the width of the confidence interval.
 
 This package includes a Shiny app to help with calculations, which you
