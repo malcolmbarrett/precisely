@@ -186,12 +186,12 @@ dplyr::group_by() to create multiple lines on the plot." />
  ) <span class='kw'>%&gt;%</span>
   <span class='fu'><a href='http://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span>(<span class='st'>"Probability"</span> <span class='kw'>=</span> <span class='fu'>factor</span>(<span class='no'>prob</span>)) <span class='kw'>%&gt;%</span>
   <span class='fu'>plot_upper_limit</span>(<span class='kw'>line_size</span> <span class='kw'>=</span> <span class='fl'>1</span>) +
-    <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/scale_viridis'>scale_color_viridis_d</a></span>() +
+    <span class='fu'><a href='ggplot2.tidyverse.org/reference/scale_viridis.html'>scale_color_viridis_d</a></span>() +
     <span class='fu'><a href='theme_precisely.html'>theme_precisely</a></span>() +
-    <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/theme'>theme</a></span>(<span class='kw'>legend.position</span> <span class='kw'>=</span> <span class='st'>"right"</span>,
-          <span class='kw'>strip.text</span> <span class='kw'>=</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/element'>element_text</a></span>(<span class='kw'>margin</span> <span class='kw'>=</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/element'>margin</a></span>(<span class='kw'>b</span> <span class='kw'>=</span> <span class='fl'>5</span>), <span class='kw'>hjust</span> <span class='kw'>=</span> <span class='fl'>0</span>)) +
-    <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/facet_wrap'>facet_wrap</a></span>(~ <span class='no'>group_ratio</span>,
-               <span class='kw'>labeller</span> <span class='kw'>=</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/as_labeller'>as_labeller</a></span>(<span class='kw'>function</span>(<span class='no'>x</span>) <span class='fu'>paste</span>(<span class='st'>"Unexposed/Exposed:"</span>, <span class='no'>x</span>)))</div><div class='img'><img src='plot_sample_size-3.png' alt='' width='700' height='433' /></div><div class='input'>
+    <span class='fu'><a href='ggplot2.tidyverse.org/reference/theme.html'>theme</a></span>(<span class='kw'>legend.position</span> <span class='kw'>=</span> <span class='st'>"right"</span>,
+          <span class='kw'>strip.text</span> <span class='kw'>=</span> <span class='fu'><a href='ggplot2.tidyverse.org/reference/element.html'>element_text</a></span>(<span class='kw'>margin</span> <span class='kw'>=</span> <span class='fu'><a href='ggplot2.tidyverse.org/reference/element.html'>margin</a></span>(<span class='kw'>b</span> <span class='kw'>=</span> <span class='fl'>5</span>), <span class='kw'>hjust</span> <span class='kw'>=</span> <span class='fl'>0</span>)) +
+    <span class='fu'><a href='ggplot2.tidyverse.org/reference/facet_wrap.html'>facet_wrap</a></span>(~ <span class='no'>group_ratio</span>,
+               <span class='kw'>labeller</span> <span class='kw'>=</span> <span class='fu'><a href='ggplot2.tidyverse.org/reference/as_labeller.html'>as_labeller</a></span>(<span class='kw'>function</span>(<span class='no'>x</span>) <span class='fu'>paste</span>(<span class='st'>"Unexposed/Exposed:"</span>, <span class='no'>x</span>)))</div><div class='img'><img src='plot_sample_size-3.png' alt='' width='700' height='433' /></div><div class='input'>
 
 </div></pre>
   </div>

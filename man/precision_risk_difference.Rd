@@ -8,20 +8,33 @@
 \alias{precision_odds_ratio}
 \title{Estimate precision of a measure based on sample size}
 \usage{
-precision_risk_difference(n_exposed, exposed, unexposed, group_ratio,
-  ci = 0.95)
+precision_risk_difference(
+  n_exposed,
+  exposed,
+  unexposed,
+  group_ratio,
+  ci = 0.95
+)
 
-precision_risk_ratio(n_exposed, exposed, unexposed, group_ratio,
-  ci = 0.95)
+precision_risk_ratio(n_exposed, exposed, unexposed, group_ratio, ci = 0.95)
 
-precision_rate_difference(n_exposed, exposed, unexposed, group_ratio,
-  ci = 0.95)
+precision_rate_difference(
+  n_exposed,
+  exposed,
+  unexposed,
+  group_ratio,
+  ci = 0.95
+)
 
-precision_rate_ratio(n_exposed, exposed, unexposed, group_ratio,
-  ci = 0.95)
+precision_rate_ratio(n_exposed, exposed, unexposed, group_ratio, ci = 0.95)
 
-precision_odds_ratio(n_cases, exposed_cases, exposed_controls, group_ratio,
-  ci = 0.95)
+precision_odds_ratio(
+  n_cases,
+  exposed_cases,
+  exposed_controls,
+  group_ratio,
+  ci = 0.95
+)
 }
 \arguments{
 \item{n_exposed, n_cases}{In cohort studies, the number of exposed

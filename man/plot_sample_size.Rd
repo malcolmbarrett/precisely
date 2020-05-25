@@ -6,14 +6,16 @@
 \alias{plot_upper_limit}
 \title{Plot precisely}
 \usage{
-plot_sample_size(.df, xlab = "Sample Size", ylab = "Precision",
-  line_size = 1)
+plot_sample_size(.df, xlab = "Sample Size", ylab = "Precision", line_size = 1)
 
-plot_precision(.df, xlab = "Precision", ylab = "Sample Size",
-  line_size = 1)
+plot_precision(.df, xlab = "Precision", ylab = "Sample Size", line_size = 1)
 
-plot_upper_limit(.df, xlab = "Sample Size", ylab = "Upper Limit",
-  line_size = 1)
+plot_upper_limit(
+  .df,
+  xlab = "Sample Size",
+  ylab = "Upper Limit",
+  line_size = 1
+)
 }
 \arguments{
 \item{.df}{a data frame with values to plot, possibly from \code{\link[=map_precisely]{map_precisely()}}.}

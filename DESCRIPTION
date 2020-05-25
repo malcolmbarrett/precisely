@@ -1,41 +1,45 @@
-Package: precisely
 Type: Package
+Package: precisely
 Title: Estimate Sample Size Based on Precision Rather Than Power
 Version: 0.1.0.9000
-Authors@R: person("Malcolm", "Barrett", 
-    email = "malcolmbarrett@gmail.com", 
-    role = c("aut", "cre"))
+Authors@R: 
+    person(given = "Malcolm",
+           family = "Barrett",
+           role = c("aut", "cre"),
+           email = "malcolmbarrett@gmail.com")
 Maintainer: Malcolm Barrett <malcolmbarrett@gmail.com>
-Description: Estimate sample size based on precision rather than power. 
-    precisely is a study planning tool to calculate sample size based on 
-    precision rather than power. Power calculations are focused on whether or 
-    not an estimate will be statistically significant; calculations of precision
-    are based on the same principles as power calculation but turn the focus to
-    the width of the confidence interval. 
+Description: Estimate sample size based on precision rather than
+    power. precisely is a study planning tool to calculate sample size
+    based on precision rather than power. Power calculations are focused
+    on whether or not an estimate will be statistically significant;
+    calculations of precision are based on the same principles as power
+    calculation but turn the focus to the width of the confidence
+    interval.
 License: MIT + file LICENSE
-Encoding: UTF-8
-LazyData: true
-Roxygen: list(markdown = TRUE)
-RoxygenNote: 6.1.1
-Depends: R (>= 3.0.1)
-Imports: 
-    dplyr,
-    magrittr,
-    purrr,
-    ggplot2,
-    stringi,
-    tidyr,
-    rlang,
-    shiny,
-    shinythemes,
-    markdown,
-    shinycssloaders
-Suggests: 
-    spelling,
-    knitr,
-    rmarkdown,
-    ggrepel
-Language: en-US
-VignetteBuilder: knitr
 URL: https://github.com/malcolmbarrett/precisely
 BugReports: https://github.com/malcolmbarrett/precisely/issues
+Depends: 
+    R (>= 3.0.1)
+Imports: 
+    dplyr,
+    ggplot2,
+    magrittr,
+    purrr,
+    rlang,
+    shiny,
+    shinycssloaders,
+    shinythemes,
+    tidyr
+Suggests: 
+    ggrepel,
+    knitr,
+    rmarkdown,
+    spelling,
+    testthat
+VignetteBuilder: 
+    knitr
+Encoding: UTF-8
+Language: en-US
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.0

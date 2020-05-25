@@ -9,20 +9,36 @@
 \title{Estimate sample size based on probability that upper limit is below level of
 concern.}
 \usage{
-upper_risk_difference(upper_limit, prob, exposed, unexposed, group_ratio,
-  ci = 0.95)
+upper_risk_difference(
+  upper_limit,
+  prob,
+  exposed,
+  unexposed,
+  group_ratio,
+  ci = 0.95
+)
 
-upper_risk_ratio(upper_limit, prob, exposed, unexposed, group_ratio,
-  ci = 0.95)
+upper_risk_ratio(upper_limit, prob, exposed, unexposed, group_ratio, ci = 0.95)
 
-upper_rate_difference(upper_limit, prob, exposed, unexposed, group_ratio,
-  ci = 0.95)
+upper_rate_difference(
+  upper_limit,
+  prob,
+  exposed,
+  unexposed,
+  group_ratio,
+  ci = 0.95
+)
 
-upper_rate_ratio(upper_limit, prob, exposed, unexposed, group_ratio,
-  ci = 0.95)
+upper_rate_ratio(upper_limit, prob, exposed, unexposed, group_ratio, ci = 0.95)
 
-upper_odds_ratio(upper_limit, prob, exposed_cases, exposed_controls,
-  group_ratio, ci = 0.95)
+upper_odds_ratio(
+  upper_limit,
+  prob,
+  exposed_cases,
+  exposed_controls,
+  group_ratio,
+  ci = 0.95
+)
 }
 \arguments{
 \item{upper_limit}{The upper limit of the confidence interval, a level of

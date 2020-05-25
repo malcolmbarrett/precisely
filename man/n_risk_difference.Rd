@@ -16,8 +16,13 @@ n_rate_difference(precision, exposed, unexposed, group_ratio, ci = 0.95)
 
 n_rate_ratio(precision, exposed, unexposed, group_ratio, ci = 0.95)
 
-n_odds_ratio(precision, exposed_cases, exposed_controls, group_ratio,
-  ci = 0.95)
+n_odds_ratio(
+  precision,
+  exposed_cases,
+  exposed_controls,
+  group_ratio,
+  ci = 0.95
+)
 }
 \arguments{
 \item{precision}{For differences, the width of the CI. For ratios, the ratio
