@@ -137,7 +137,7 @@ ui <- fluidPage(
           )),
 
         sliderInput("ci",
-                    "Confidence Interval Probability",
+                    "Confidence Interval Coverage",
                     value = .95, min = 0, max = 1),
 
         selectInput("group_var",
