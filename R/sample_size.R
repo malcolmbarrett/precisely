@@ -62,7 +62,8 @@ n_risk_difference <- function(precision, exposed, unexposed, group_ratio, ci = .
     precision,
     exposed,
     unexposed,
-    group_ratio
+    group_ratio,
+    ci
   )
 }
 
@@ -167,6 +168,6 @@ n_odds_ratio <- function(precision, exposed_cases, exposed_controls, group_ratio
     exposed_controls,
     group_ratio,
     ci
-    )
+  )
 }
 
