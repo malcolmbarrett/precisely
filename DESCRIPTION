@@ -10,11 +10,12 @@ Authors@R:
 Maintainer: Malcolm Barrett <malcolmbarrett@gmail.com>
 Description: Estimate sample size based on precision rather than
     power. 'precisely' is a study planning tool to calculate sample size
-    based on precision rather than power. Power calculations are focused
+    based on precision. Power calculations are focused
     on whether or not an estimate will be statistically significant;
     calculations of precision are based on the same principles as power
     calculation but turn the focus to the width of the confidence
-    interval.
+    interval. 'precisely' is based on the work of Rothman and Greenland 
+    (2018) <doi: 10.1097/EDE.0000000000000876>.
 License: MIT + file LICENSE
 URL: https://github.com/malcolmbarrett/precisely
 BugReports: https://github.com/malcolmbarrett/precisely/issues
