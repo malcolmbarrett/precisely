@@ -11,3 +11,4 @@
 ^\.Rprofile$
 ^inst/shiny_app/precisely/rsconnect$
 ^deploy$
+^codecov\.yml$
