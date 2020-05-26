@@ -9,8 +9,6 @@ status](https://travis-ci.org/malcolmbarrett/precisely.svg?branch=master)](https
 status](https://ci.appveyor.com/api/projects/status/github/malcolmbarrett/precisely?branch=master&svg=true)](https://ci.appveyor.com/project/malcolmbarrett/precisely)
 [![Codecov test
 coverage](https://codecov.io/gh/malcolmbarrett/precisely/branch/master/graph/badge.svg)](https://codecov.io/gh/malcolmbarrett/precisely?branch=master)
-[![Travis build
-status](https://travis-ci.com/malcolmbarrett/precisely.svg?branch=master)](https://travis-ci.com/malcolmbarrett/precisely)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/precisely)](https://CRAN.R-project.org/package=precisely)
 [![Lifecycle:
