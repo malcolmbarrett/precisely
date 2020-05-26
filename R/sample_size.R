@@ -113,7 +113,8 @@ n_rate_difference <- function(precision, exposed, unexposed, group_ratio, ci = .
     precision,
     exposed,
     unexposed,
-    group_ratio
+    group_ratio,
+    ci
   )
 }
 
