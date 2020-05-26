@@ -12,3 +12,4 @@
 ^inst/shiny_app/precisely/rsconnect$
 ^deploy$
 ^codecov\.yml$
+^cran-comments\.md$
