@@ -38,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">precisely</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0.9000</span>
       </span>
     </div>
 
@@ -88,8 +88,10 @@
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
+<p>You precisely from CRAN with:</p>
+<div class="sourceCode" id="cb1"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"precisely"</span>)</pre></div>
 <p>You can install the development version of precisely with:</p>
-<div class="sourceCode" id="cb1"><pre class="r"><span class="co"># install.packages("devtools")</span>
+<div class="sourceCode" id="cb2"><pre class="r"><span class="co"># install.packages("devtools")</span>
 <span class="kw pkg">devtools</span><span class="kw ns">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span>(<span class="st">"malcolmbarrett/precisely"</span>)</pre></div>
 </div>
 <div id="example" class="section level2">
@@ -97,7 +99,7 @@
 <a href="#example" class="anchor"></a>Example</h2>
 <p>precisely has functions for studies using risk differences, risk ratios, rate differences, rate ratios, and odds ratios. The heart of these calculations is the desired precision. For ratio measures, this is the ratio of the upper to lower limit of the confidence interval. For difference measures, this is the absolute width of the confidence interval. To calculate sample size for a given precision, you also need proportions for the two groups (the risk or rate in the exposed and unexposed participants in a cohort study or the exposure prevalence in the cases and controls in case-control studies), the ratios of the two groups (the unexposed to the exposed in cohort studies or controls to cases in case-control studies), and the desired confidence interval probability. The default is 95%.</p>
 <p>Let’s say we want to calculate the sample size needed to estimate a 90% CI for a risk difference of .1 with an absolute width of .08. Here, the risk among the exposed is .4, the risk among the unexposed is .3, and there are three times as many unexposed participants.</p>
-<div class="sourceCode" id="cb2"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">precisely</span>)
+<div class="sourceCode" id="cb3"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">precisely</span>)
 
 <span class="fu"><a href="reference/n_risk_difference.html">n_risk_difference</a></span>(
   <span class="kw">precision</span> <span class="kw">=</span> <span class="fl">.08</span>,
@@ -113,7 +115,7 @@
 <span class="co">#&gt; # … with 2 more variables: group_ratio &lt;dbl&gt;, ci &lt;dbl&gt;</span></pre></div>
 <p>precisely also provides functionality to calculate the precision of an estimate given a sample size and to calculate sample size based on probability that the upper limit of the confidence interval is below a level of concern.</p>
 <p>To calculate several values and plot them, use <code><a href="reference/map_precisely.html">map_precisely()</a></code> and the included <code>plot_*()</code> functions.</p>
-<div class="sourceCode" id="cb3"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">tidyverse</span>)
+<div class="sourceCode" id="cb4"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">tidyverse</span>)
 
 <span class="fu"><a href="reference/map_precisely.html">map_precisely</a></span>(
   <span class="no">upper_rate_ratio</span>,
@@ -133,6 +135,11 @@
                <span class="kw">labeller</span> <span class="kw">=</span> <span class="fu">as_labeller</span>(<span class="kw">function</span>(<span class="no">x</span>) <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span>(<span class="st">"Unexposed/Exposed:"</span>, <span class="no">x</span>)))</pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-2-1.png" width="100%"></p>
 </div>
+<div id="code-of-conduct" class="section level2">
+<h2 class="hasAnchor">
+<a href="#code-of-conduct" class="anchor"></a>Code of Conduct</h2>
+<p>Please note that the precisely project is released with a <a href="https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
+</div>
 </div>
 
   </div>
@@ -141,6 +148,8 @@
     <div class="links">
 <h2>Links</h2>
 <ul class="list-unstyled">
+<li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=precisely">https://​cloud.r-project.org/​package=precisely</a>
+</li>
 <li>Browse source code at <br><a href="https://github.com/malcolmbarrett/precisely/">https://​github.com/​malcolmbarrett/​precisely/​</a>
 </li>
 <li>Report a bug at <br><a href="https://github.com/malcolmbarrett/precisely/issues">https://​github.com/​malcolmbarrett/​precisely/​issues</a>
@@ -152,6 +161,13 @@
 <ul class="list-unstyled">
 <li><a href="LICENSE.html">Full license</a></li>
 <li><small><a href="https://opensource.org/licenses/mit-license.php">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a></small></li>
+</ul>
+</div>
+<div class="community">
+<h2>Community</h2>
+<ul class="list-unstyled">
+<li><a href="CONTRIBUTING.html">Contributing guide</a></li>
+<li><a href="CODE_OF_CONDUCT.html">Code of conduct</a></li>
 </ul>
 </div>
 <div class="developers">
