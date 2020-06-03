@@ -35,6 +35,12 @@ These tools are based on the work of [Rothman and Greenland](https://www.ncbi.nl
 
 ## Installation
 
+You precisely from CRAN with:
+
+``` r
+install.packages("precisely")
+```
+
 You can install the development version of precisely with:
 
 ``` r
@@ -85,4 +91,6 @@ map_precisely(
                labeller = as_labeller(function(x) paste("Unexposed/Exposed:", x)))
 ```
 
+## Code of Conduct
 
+Please note that the precisely project is released with a [Contributor Code of Conduct](https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html). By contributing to this project, you agree to abide by its terms.
