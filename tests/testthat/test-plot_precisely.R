@@ -1,5 +1,11 @@
 context("precisely-plots")
 
+expect_doppelganger <- function(title, fig, path = NULL, ...) {
+  testthat::skip_if_not_installed("vdiffr")
+  vdiffr::expect_doppelganger(title, fig, path = path, ...)
+}
+
+
 test_that("precisely plots work", {
   library(dplyr)
   library(ggplot2)
@@ -40,7 +46,7 @@ test_that("precisely plots work", {
     facet_wrap(~ group_ratio,
                labeller = as_labeller(function(x) paste("Unexposed/Exposed:", x)))
 
-  vdiffr::expect_doppelganger("Basic line plot works", p1)
-  vdiffr::expect_doppelganger("Grouped line plot works", p2)
-  vdiffr::expect_doppelganger("Themed line plot works", p3)
+  expect_doppelganger("Basic line plot works", p1)
+  expect_doppelganger("Grouped line plot works", p2)
+  expect_doppelganger("Themed line plot works", p3)
 })
