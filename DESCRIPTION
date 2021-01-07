@@ -1,7 +1,7 @@
 Type: Package
 Package: precisely
 Title: Estimate Sample Size Based on Precision Rather than Power
-Version: 0.1.0.9000
+Version: 0.1.1
 Authors@R: 
     person("Malcolm", "Barrett", 
     email = "malcolmbarrett@gmail.com", 

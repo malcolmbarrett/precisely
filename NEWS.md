@@ -1,4 +1,4 @@
-# precisely (development version)
+# precisely 0.1.1
 
 * make vdiffr conditional
 
