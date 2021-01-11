@@ -16,8 +16,8 @@ values are given to the function.}
 a tibble
 }
 \description{
-\code{map_precisely()} is a wrapper around \code{\link[tidyr:crossing]{tidyr::crossing()}} and
-\code{\link[purrr:pmap_dfr]{purrr::pmap_dfr()}} to give a set of values to any of the calculation
+\code{map_precisely()} is a wrapper around \code{\link[tidyr:expand]{tidyr::crossing()}} and
+\code{\link[purrr:map2]{purrr::pmap_dfr()}} to give a set of values to any of the calculation
 functions in precisely. All possible combinations of the values are passed to
 the function, returning a tibble where each row is the result for each
 combination.

@@ -7,7 +7,7 @@
 theme_precisely(base_size = 14, base_family = "", ...)
 }
 \arguments{
-\item{base_size}{base font size}
+\item{base_size}{base font size, given in pts.}
 
 \item{base_family}{base font family}
 

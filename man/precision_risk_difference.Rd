@@ -78,5 +78,5 @@ precision_odds_ratio(
 }
 \references{
 Rothman, K.J. and Greenland, S. 2018.
-\href{https://www.ncbi.nlm.nih.gov/pubmed/29912015}{Planning Study Size Based on Precision Rather Than Power}. 29(5):599-603.
+\href{https://pubmed.ncbi.nlm.nih.gov/29912015/}{Planning Study Size Based on Precision Rather Than Power}. 29(5):599-603.
 }

@@ -26,7 +26,7 @@ knitr::opts_chunk$set(
 
 precisely is a study planning tool to calculate sample size based on precision rather than power. Power calculations are focused on whether or not an estimate will be statistically significant; calculations of precision are based on the same principles as power calculation but turn the focus to the width of the confidence interval. 
 
-These tools are based on the work of [Rothman and Greenland](https://www.ncbi.nlm.nih.gov/pubmed/29912015).
+These tools are based on the work of [Rothman and Greenland](https://pubmed.ncbi.nlm.nih.gov/29912015/).
 
 precisely has functions for studies using risk differences, risk ratios, rate differences, rate ratios, and odds ratios. The heart of these calculations is the desired precision.  For ratio measures, this is the ratio of the upper to lower limit of the confidence interval. For difference measures, this is the absolute width of the confidence interval. To calculate sample size for a given precision, you also need proportions for the two groups (the risk or rate in the exposed and unexposed participants in a cohort study or the exposure prevalence in the cases and controls in case-control studies), the ratios of the two groups (the unexposed to the exposed in cohort studies or controls to cases in case-control studies), and the desired confidence interval probability. The default is 95%.
 

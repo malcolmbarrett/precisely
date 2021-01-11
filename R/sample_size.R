@@ -22,7 +22,7 @@
 #'
 #' @references Rothman, K.J. and Greenland, S. 2018.
 #'   [Planning Study Size Based on Precision Rather
-#'   Than Power](https://www.ncbi.nlm.nih.gov/pubmed/29912015). 29(5):599-603.
+#'   Than Power](https://pubmed.ncbi.nlm.nih.gov/29912015/). 29(5):599-603.
 #'
 #' @examples
 #'

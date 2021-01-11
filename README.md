@@ -1,6 +1,5 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-
 <!-- badges: start -->
 
 [![Travis build
@@ -29,10 +28,10 @@ version at
 [malcolmbarrett.shinyapps.io/precisely](https://malcolmbarrett.shinyapps.io/precisely/).
 
 For more, see the
-[vignette](http://precisely.malco.io/articles/introduction-to-precisely.html).
+[vignette](https://precisely.malco.io/articles/introduction-to-precisely.html).
 
 These tools are based on the work of [Rothman and
-Greenland](https://www.ncbi.nlm.nih.gov/pubmed/29912015).
+Greenland](https://pubmed.ncbi.nlm.nih.gov/29912015/).
 
 ## Installation
 

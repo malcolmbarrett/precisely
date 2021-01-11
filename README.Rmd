@@ -29,9 +29,9 @@ precisely is a study planning tool to calculate sample size based on precision r
 
 This package includes a Shiny app to help with calculations, which you can start with `launch_precisely_app()`. You can also find a live version at [malcolmbarrett.shinyapps.io/precisely](https://malcolmbarrett.shinyapps.io/precisely/).
 
-For more, see the [vignette](http://precisely.malco.io/articles/introduction-to-precisely.html).
+For more, see the [vignette](https://precisely.malco.io/articles/introduction-to-precisely.html).
 
-These tools are based on the work of [Rothman and Greenland](https://www.ncbi.nlm.nih.gov/pubmed/29912015).
+These tools are based on the work of [Rothman and Greenland](https://pubmed.ncbi.nlm.nih.gov/29912015/).
 
 ## Installation
 
