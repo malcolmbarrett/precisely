@@ -12,6 +12,7 @@ coverage](https://codecov.io/gh/malcolmbarrett/precisely/branch/master/graph/bad
 status](https://www.r-pkg.org/badges/version/precisely)](https://CRAN.R-project.org/package=precisely)
 [![Lifecycle:
 maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
+[![R-CMD-check](https://github.com/malcolmbarrett/precisely/workflows/R-CMD-check/badge.svg)](https://github.com/malcolmbarrett/precisely/actions)
 <!-- badges: end -->
 
 # precisely: An R package for estimating sample size based on precision
@@ -78,7 +79,7 @@ n_risk_difference(
   group_ratio = 3,
   ci = .90
 )
-#> # A tibble: 1 x 9
+#> # A tibble: 1 × 9
 #>   n_exposed n_unexposed n_total risk_difference precision exposed unexposed
 #>       <dbl>       <dbl>   <dbl>           <dbl>     <dbl>   <dbl>     <dbl>
 #> 1      524.       1573.   2097.             0.1      0.08     0.4       0.3
