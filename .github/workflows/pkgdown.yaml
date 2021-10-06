@@ -26,6 +26,10 @@ jobs:
           extra-packages: pkgdown
           needs: website
 
+      - name: Build pkgdown site
+        run: |
+          Rscript -e 'pkgdown::build_site()'
+
       - name: Deploy to Netlify
         # NETLIFY_AUTH_TOKEN and NETLIFY_SITE_ID added in the repo's secrets
         env:
