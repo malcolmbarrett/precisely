@@ -2,17 +2,13 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 <!-- badges: start -->
 
-[![Travis build
-status](https://travis-ci.org/malcolmbarrett/precisely.svg?branch=master)](https://travis-ci.org/malcolmbarrett/precisely)
-[![AppVeyor build
-status](https://ci.appveyor.com/api/projects/status/github/malcolmbarrett/precisely?branch=master&svg=true)](https://ci.appveyor.com/project/malcolmbarrett/precisely)
+[![R-CMD-check](https://github.com/malcolmbarrett/precisely/workflows/R-CMD-check/badge.svg)](https://github.com/malcolmbarrett/precisely/actions)
 [![Codecov test
 coverage](https://codecov.io/gh/malcolmbarrett/precisely/branch/master/graph/badge.svg)](https://codecov.io/gh/malcolmbarrett/precisely?branch=master)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/precisely)](https://CRAN.R-project.org/package=precisely)
 [![Lifecycle:
 maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
-[![R-CMD-check](https://github.com/malcolmbarrett/precisely/workflows/R-CMD-check/badge.svg)](https://github.com/malcolmbarrett/precisely/actions)
 <!-- badges: end -->
 
 # precisely: An R package for estimating sample size based on precision
