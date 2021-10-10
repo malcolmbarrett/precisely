@@ -32,3 +32,7 @@ odds <- function(p) {
 odds_ratio <- function(exposed_cases, exposed_controls) {
   prob_mult(exposed_cases, exposed_controls) / prob_mult(exposed_controls, exposed_cases)
 }
+
+# quiet note re: deps
+withSpinner <- shinycssloaders::withSpinner
+shinytheme <- shinythemes::shinytheme
