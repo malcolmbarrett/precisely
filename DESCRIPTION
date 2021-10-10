@@ -12,8 +12,7 @@ Description: Estimate sample size based on precision rather than power.
     estimate will be statistically significant; calculations of precision
     are based on the same principles as power calculation but turn the
     focus to the width of the confidence interval. 'precisely' is based on
-    the work of 'Rothman and Greenland' (2018) <doi:
-    10.1097/EDE.0000000000000876>.
+    the work of 'Rothman and Greenland' (2018).
 License: MIT + file LICENSE
 URL: https://github.com/malcolmbarrett/precisely
 BugReports: https://github.com/malcolmbarrett/precisely/issues
