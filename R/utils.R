@@ -34,5 +34,9 @@ odds_ratio <- function(exposed_cases, exposed_controls) {
 }
 
 # quiet note re: deps
-withSpinner <- shinycssloaders::withSpinner
-shinytheme <- shinythemes::shinytheme
+quiet_deps <- function() {
+  withSpinner <- shinycssloaders::withSpinner(shiny::actionButton("go", "Go"))
+  shinytheme <- shinythemes::shinytheme("cerulean")
+
+  c(withSpinner, shinytheme)
+}
