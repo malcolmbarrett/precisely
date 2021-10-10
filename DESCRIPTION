@@ -1,7 +1,7 @@
 Type: Package
 Package: precisely
 Title: Estimate Sample Size Based on Precision Rather than Power
-Version: 0.1.1.9000
+Version: 0.1.2
 Authors@R: 
     person("Malcolm", "Barrett", , "malcolmbarrett@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0003-0299-5825"))

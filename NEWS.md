@@ -1,4 +1,4 @@
-# precisely (development version)
+# precisely 0.1.2
 
 * Updated app to improve downloading, state bookmarking, and misc. bugs (#6).
 
