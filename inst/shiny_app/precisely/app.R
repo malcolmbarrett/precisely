@@ -155,6 +155,9 @@ ui <- fluidPage(
                      value = 4)
       ),
 
+      hr(),
+
+      bookmarkButton(label = "Save app settings"),
       width = 3),
     # Main panel
     mainPanel(
@@ -408,5 +411,5 @@ server <- function(input, output, session) {
 }
 
 # Run the application
-shinyApp(ui = ui, server = server)
+shinyApp(ui = ui, server = server, enableBookmarking = "url")
 
