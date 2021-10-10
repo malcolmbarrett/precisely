@@ -8,7 +8,7 @@ coverage](https://codecov.io/gh/malcolmbarrett/precisely/branch/master/graph/bad
 [![CRAN
 status](https://www.r-pkg.org/badges/version/precisely)](https://CRAN.R-project.org/package=precisely)
 [![Lifecycle:
-maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
+maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://lifecycle.r-lib.org/articles/stages.html)
 <!-- badges: end -->
 
 # precisely: An R package for estimating sample size based on precision
