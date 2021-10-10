@@ -8,3 +8,4 @@ inst/shiny_app/precisely/rsconnect
 deploy/
 cran-comments.md
 CRAN-RELEASE
+rhub.R
