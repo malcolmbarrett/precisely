@@ -6,172 +6,195 @@ library(markdown)
 library(shinycssloaders)
 
 ui <- fluidPage(
-   theme = shinythemes::shinytheme("united"),
+  theme = shinythemes::shinytheme("united"),
 
-   # Application title
-   titlePanel("Estimate Sample Size Based on Precision"),
+  # Application title
+  titlePanel("Estimate Sample Size Based on Precision"),
 
-   # Sidebar with a slider input for number of bins
-   sidebarLayout(
-      sidebarPanel(
-         selectInput("outcome",
-                     "Calculate:",
-                     choices = list(
-                      "Sample Size based on Precision" = "n_",
-                      "Precision based on Sample Size" = "precision_",
-                      "Sample Size based on Upper Limit" = "upper_"
-                     ), selected = 1),
+  # Sidebar with a slider input for number of bins
+  sidebarLayout(
+    sidebarPanel(
+      selectInput("outcome",
+                  "Calculate:",
+                  choices = list(
+                    "Sample Size based on Precision" = "n_",
+                    "Precision based on Sample Size" = "precision_",
+                    "Sample Size based on Upper Limit" = "upper_"
+                  ), selected = 1),
 
-         selectInput("measure",
-                     "Measure:",
-                     choices = list(
-                      "Risk Difference" = "risk_difference",
-                      "Risk Ratio" = "risk_ratio",
-                      "Rate Difference" = "rate_difference",
-                      "Rate Ratio" = "rate_ratio",
-                      "Odds Ratio" = "odds_ratio"
-                     ), selected = 1),
+      selectInput("measure",
+                  "Measure:",
+                  choices = list(
+                    "Risk Difference" = "risk_difference",
+                    "Risk Ratio" = "risk_ratio",
+                    "Rate Difference" = "rate_difference",
+                    "Rate Ratio" = "rate_ratio",
+                    "Odds Ratio" = "odds_ratio"
+                  ), selected = 1),
 
-        conditionalPanel(
-          condition = "input.outcome == 'n_'",
-            uiOutput("precision_desc"),
-            splitLayout(
-              numericInput("precision_from",
-                          label = "From",
-                          value = .1),
-              numericInput("precision_to",
-                          "To",
-                          value = .2)
-          )),
-        conditionalPanel(
-          condition = "input.outcome == 'precision_' & input.measure != 'odds_ratio'",
-           tags$label("Number of Exposed Participants", class = "control-label"),
-            splitLayout(
-              numericInput("n_from_cohort",
-                          label = "From",
-                          value = 500),
-              numericInput("n_to_cohort",
-                          "To",
-                          value = 1000)
-          )),
-        conditionalPanel(
-          condition = "input.outcome == 'precision_' & input.measure == 'odds_ratio'",
-           tags$label("Number of Cases", class = "control-label"),
-            splitLayout(
-              numericInput("n_from_cc",
-                          label = "From",
-                          value = 500),
-              numericInput("n_to_cc",
-                          "To",
-                          value = 1000)
-          )),
-        conditionalPanel(
-          condition = "input.outcome == 'upper_'",
-           tags$label("The upper limit of the confidence interval (level of concern).", class = "control-label"),
-            splitLayout(
-              numericInput("upper_from",
-                          label = "From",
-                          value = .1),
-              numericInput("upper_to",
-                          "To",
-                          value = .2)
-          )),
+      conditionalPanel(
+        condition = "input.outcome == 'n_'",
+        uiOutput("precision_desc"),
+        splitLayout(
+          numericInput("precision_from",
+                       label = "From",
+                       value = .1),
+          numericInput("precision_to",
+                       "To",
+                       value = .2)
+        )),
+      conditionalPanel(
+        condition = "input.outcome == 'precision_' & input.measure != 'odds_ratio'",
+        tags$label("Number of Exposed Participants", class = "control-label"),
+        splitLayout(
+          numericInput("n_from_cohort",
+                       label = "From",
+                       value = 500),
+          numericInput("n_to_cohort",
+                       "To",
+                       value = 1000)
+        )),
+      conditionalPanel(
+        condition = "input.outcome == 'precision_' & input.measure == 'odds_ratio'",
+        tags$label("Number of Cases", class = "control-label"),
+        splitLayout(
+          numericInput("n_from_cc",
+                       label = "From",
+                       value = 500),
+          numericInput("n_to_cc",
+                       "To",
+                       value = 1000)
+        )),
+      conditionalPanel(
+        condition = "input.outcome == 'upper_'",
+        tags$label("The upper limit of the confidence interval (level of concern).", class = "control-label"),
+        splitLayout(
+          numericInput("upper_from",
+                       label = "From",
+                       value = .1),
+          numericInput("upper_to",
+                       "To",
+                       value = .2)
+        )),
 
-        conditionalPanel(
-          condition = "input.outcome == 'upper_'",
-              uiOutput("prob_slider")
+      conditionalPanel(
+        condition = "input.outcome == 'upper_'",
+        uiOutput("prob_slider")
+      ),
+
+      conditionalPanel(
+        condition = "input.measure == 'odds_ratio'",
+        tags$label("The proportion of exposed cases and controls.", class = "control-label"),
+        splitLayout(
+          uiOutput("exposed_cases_slider"),
+          uiOutput("exposed_controls_slider")
+        )),
+
+      conditionalPanel(
+        condition = "input.measure != 'odds_ratio'",
+        tags$label("The risk or rate among participants", class = "control-label"),
+        splitLayout(
+          uiOutput("exposed_slider"),
+          uiOutput("unexposed_slider")
+        )),
+
+      conditionalPanel(
+        condition = "input.measure == 'odds_ratio' & input.group_var != 'group_ratio'",
+        numericInput("group_ratio_cc",
+                     "The ratio of number of controls to cases",
+                     value = 1)
+      ),
+
+      conditionalPanel(
+        condition = "input.measure != 'odds_ratio' & input.group_var != 'group_ratio'",
+        numericInput("group_ratio_cohort",
+                     "The ratio of number of unexposed to exposed participants",
+                     value = 1)
+      ),
+
+      conditionalPanel(
+        condition = "input.measure == 'odds_ratio' & input.group_var == 'group_ratio'",
+        tags$label("The ratio of number of controls to cases", class = "control-label"),
+        splitLayout(
+          numericInput("group_ratio_cc_from",
+                       "From",
+                       value = 1),
+          numericInput("group_ratio_cc_to",
+                       "To",
+                       value = 4)
+        )),
+
+      conditionalPanel(
+        condition = "input.measure != 'odds_ratio' & input.group_var == 'group_ratio'",
+        tags$label("The ratio of number of unexposed to exposed participants", class = "control-label"),
+        splitLayout(
+          numericInput("group_ratio_cohort_from",
+                       "From",
+                       value = 1),
+          numericInput("group_ratio_cohort_to",
+                       "To",
+                       value = 4)
+        )),
+
+      sliderInput("ci",
+                  "Confidence Interval Coverage",
+                  value = .95, min = 0, max = 1),
+
+      selectInput("group_var",
+                  "Group By",
+                  choices = list(
+                    "None" = "none",
+                    "Exposed" = "exposed",
+                    "Unexposed" = "unexposed",
+                    "Group Ratio" = "group_ratio")),
+
+      conditionalPanel(
+        condition = "input.group_var != 'none'",
+        numericInput("group_var_groups",
+                     "Number of groups",
+                     value = 4)
+      ),
+
+      hr(),
+
+      bookmarkButton(label = "Save app settings"),
+      width = 3),
+    # Main panel
+    mainPanel(
+      includeMarkdown("intro.md"),
+      tabsetPanel(
+        type = "tabs",
+        tabPanel(
+          "Plot",
+
+          withSpinner(plotOutput("precisely_plot", height = "600px")),
+          hr(),
+          h2("Download plot"),
+          selectInput("file_ext", "File type", choices = c("png", "pdf", "jpg", "tiff")),
+          splitLayout(
+            numericInput("fig_height", "Height", value = 5),
+            numericInput("fig_width", "Width", value = 7.5),
+            numericInput("fig_dpi", "DPI", value = 320)
           ),
-
-        conditionalPanel(
-          condition = "input.measure == 'odds_ratio'",
-           tags$label("The proportion of exposed cases and controls.", class = "control-label"),
-            splitLayout(
-              uiOutput("exposed_cases_slider"),
-              uiOutput("exposed_controls_slider")
-          )),
-
-        conditionalPanel(
-          condition = "input.measure != 'odds_ratio'",
-           tags$label("The risk or rate among participants", class = "control-label"),
-            splitLayout(
-              uiOutput("exposed_slider"),
-              uiOutput("unexposed_slider")
-          )),
-
-        conditionalPanel(
-          condition = "input.measure == 'odds_ratio' & input.group_var != 'group_ratio'",
-              numericInput("group_ratio_cc",
-                          "The ratio of number of controls to cases",
-                          value = 1)
-          ),
-
-        conditionalPanel(
-          condition = "input.measure != 'odds_ratio' & input.group_var != 'group_ratio'",
-              numericInput("group_ratio_cohort",
-                          "The ratio of number of unexposed to exposed participants",
-                          value = 1)
-          ),
-
-        conditionalPanel(
-          condition = "input.measure == 'odds_ratio' & input.group_var == 'group_ratio'",
-           tags$label("The ratio of number of controls to cases", class = "control-label"),
-            splitLayout(
-              numericInput("group_ratio_cc_from",
-                          "From",
-                          value = 1),
-              numericInput("group_ratio_cc_to",
-                          "To",
-                          value = 4)
-          )),
-
-        conditionalPanel(
-          condition = "input.measure != 'odds_ratio' & input.group_var == 'group_ratio'",
-           tags$label("The ratio of number of unexposed to exposed participants", class = "control-label"),
-            splitLayout(
-              numericInput("group_ratio_cohort_from",
-                          "From",
-                          value = 1),
-              numericInput("group_ratio_cohort_to",
-                          "To",
-                          value = 4)
-          )),
-
-        sliderInput("ci",
-                    "Confidence Interval Coverage",
-                    value = .95, min = 0, max = 1),
-
-        selectInput("group_var",
-                    "Group By",
-                    choices = list(
-                      "None" = "none",
-                      "Exposed" = "exposed",
-                      "Unexposed" = "unexposed",
-                      "Group Ratio" = "group_ratio")),
-
-        conditionalPanel(
-          condition = "input.group_var != 'none'",
-              numericInput("group_var_groups",
-                          "Number of groups",
-                          value = 4)
-          ),
-
-        width = 3),
-      # Main panel
-      mainPanel(
-        includeMarkdown("intro.md"),
-        tabsetPanel(
-          type = "tabs",
-          tabPanel("Plot", withSpinner(plotOutput("precisely_plot", height = "600px"))),
-          tabPanel(
-            "Table",
-            dataTableOutput("precisely_table"),
-            downloadButton('downloadData', 'Download as CSV')
-           ),
-          tabPanel("About", includeMarkdown("about.md"))
-          ),
-        width = 7
-      )
-   )
+          downloadButton('downloadPlot', 'Download plot'),
+          br(),
+          br(),
+          br()
+        ),
+        tabPanel(
+          "Table",
+          dataTableOutput("precisely_table"),
+          h2("Download data"),
+          downloadButton('downloadData', 'Download as CSV'),
+          br(),
+          br(),
+          br()
+        ),
+        tabPanel("About", includeMarkdown("about.md"))
+      ),
+      width = 7
+    )
+  )
 )
 
 # Define server logic
@@ -199,8 +222,8 @@ server <- function(input, output, session) {
 
     # Can also set the label and select items
     updateSelectInput(session, "group_var",
-      label = "Group By",
-      choices = function_args
+                      label = "Group By",
+                      choices = function_args
     )
   })
 
@@ -292,6 +315,28 @@ server <- function(input, output, session) {
   }
 
   precisely_data <- reactive({
+    req(
+      input$prob,
+      input$exposed_cases,
+      input$exposed_controls,
+      input$exposed,
+      input$unexposed,
+      input$group_ratio_cc,
+      input$group_ratio_cc_to,
+      input$group_ratio_cc_from,
+      input$group_ratio_cohort,
+      input$group_ratio_cohort_to,
+      input$group_ratio_cohort_from,
+      input$precision_from,
+      input$precision_to,
+      input$n_from_cc,
+      input$n_to_cc,
+      input$n_from_cohort,
+      input$n_to_cohort,
+      input$upper_from,
+      input$upper_to
+    )
+
     inputted_args <- list(
       "precision" = process_box(input$precision_from, input$precision_to, groups = 100),
       "n_cases" = process_box(input$n_from_cc, input$n_to_cc, groups = 100),
@@ -325,14 +370,14 @@ server <- function(input, output, session) {
 
   output$downloadData <- downloadHandler(
     filename = function() {
-      paste("precisely_output", Sys.Date(), ".csv", sep = "")
+      paste0("precisely_output", Sys.Date(), ".csv")
     },
     content = function(con) {
       write.csv(precisely_output(), con)
     }
   )
 
-  output$precisely_plot <- renderPlot({
+  build_precisely_plot <- reactive({
     .data <- precisely_output()
     outcome <- input$outcome
     group_var <- input$group_var
@@ -365,8 +410,28 @@ server <- function(input, output, session) {
 
     p + theme_precisely(base_size = 28)
   })
+
+  output$precisely_plot <- renderPlot({
+    build_precisely_plot()
+  })
+
+  output$downloadPlot <- downloadHandler(
+    filename = function() {
+      paste0("precisely_plot", Sys.Date(), ".", input$file_ext)
+    },
+    content = function(file) {
+      ggsave(
+        file,
+        build_precisely_plot(),
+        height = input$fig_height,
+        width = input$fig_width,
+        dpi = input$fig_dpi,
+        bg = "white"
+      )
+    }
+  )
 }
 
 # Run the application
-shinyApp(ui = ui, server = server)
+shinyApp(ui = ui, server = server, enableBookmarking = "url")
 
