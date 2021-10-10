@@ -315,6 +315,28 @@ server <- function(input, output, session) {
   }
 
   precisely_data <- reactive({
+    req(
+      input$prob,
+      input$exposed_cases,
+      input$exposed_controls,
+      input$exposed,
+      input$unexposed,
+      input$group_ratio_cc,
+      input$group_ratio_cc_to,
+      input$group_ratio_cc_from,
+      input$group_ratio_cohort,
+      input$group_ratio_cohort_to,
+      input$group_ratio_cohort_from,
+      input$precision_from,
+      input$precision_to,
+      input$n_from_cc,
+      input$n_to_cc,
+      input$n_from_cohort,
+      input$n_to_cohort,
+      input$upper_from,
+      input$upper_to
+    )
+
     inputted_args <- list(
       "precision" = process_box(input$precision_from, input$precision_to, groups = 100),
       "n_cases" = process_box(input$n_from_cc, input$n_to_cc, groups = 100),
